@@ -1,0 +1,25 @@
+.owe {
+  color: red;
+}
+
+.own {
+  color: green;
+}
+
+#home .amount {
+  font-weight: bold;
+}
+
+#home .date {
+  font-style: italic;
+}
+
+#details .summary {
+  display: inline;
+}
+
+#details p.summary {
+  margin: 0px;
+  float: right;
+  font-weight: bold;
+}
