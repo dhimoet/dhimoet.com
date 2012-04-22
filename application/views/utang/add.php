@@ -12,7 +12,6 @@
       <label for="username" class="select">Interaction with:</label>
       <select name="username" id="username">
         <?php 
-            //var_dump($this->friends);
           // run a query for each friend
           foreach($this->users as $key => $value):
         ?>
@@ -46,7 +45,7 @@
       <label for="additional">Additional description:</label>
       <textarea name="additional" id="additional"></textarea>
       
-      <input type='submit' value='Add a Transaction' data-theme='b' />
+      <input type='submit' value='Add Now!' data-theme='b' />
     
     </form><!-- form container -->
   </div><!-- content container -->

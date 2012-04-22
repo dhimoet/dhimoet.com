@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   
@@ -12,22 +12,6 @@
   <link rel="stylesheet" type="text/css" href="/static/css/jquery.mobile-1.0.1.min.css" />
   <script type="text/javascript" src="/static/js/jquery-1.6.4.min.js"></script>
   <script type="text/javascript" src="/static/js/jquery.mobile-1.0.1.min.js"></script>
-  
-<?php foreach($page_css as $item): ?>
-  <link rel="stylesheet" type="text/css" href="/static/css/<?php echo $item; ?>.css" />
-<?php endforeach; ?>
-
-<?php if(isset($page_css_external)) foreach($page_css_external as $item): ?>
-  <link rel="stylesheet" type="text/css" href="<?php echo $item; ?>" />
-<?php endforeach; ?>
-  
-<?php foreach($page_js as $item): ?>
-  <script type="text/javascript" src="/static/js/<?php echo $item; ?>.js"></script>
-<?php endforeach; ?>
-
-<?php if(isset($page_js_external)) foreach($page_js_external as $item): ?>
-  <script type="text/javascript" src="<?php echo $item; ?>"></script>
-<?php endforeach; ?>
 
 <script type='text/javascript'>
 $(document).bind('pagebeforecreate', function() {

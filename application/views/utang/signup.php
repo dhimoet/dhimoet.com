@@ -2,6 +2,7 @@
   
   <div data-theme='b' data-role='header' style='position:fixed; z-index:999; top:0px;'>
     <h3>Sign Up</h3>
+    <a data-rel="back" data-role='button' data-icon='back'>Back</a>
   </div>
   
   <div data-role='content' style='margin:40px 0px 80px 0px;'>
