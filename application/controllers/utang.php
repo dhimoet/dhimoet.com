@@ -48,14 +48,13 @@ class Utang extends CI_Controller {
             }
             $friends_object = json_decode($current_user->user_friends); // to object
             $this->friend = array();
-            $i = 0;
             foreach($friends_object as $email => $status) {
                 // get the user name for each email address
                 $query = $this->db->get_where('users', array('email' => $email));
                 $user = $query->row();
-                $this->friend[$i]['username'] = $user->username;
-                $this->friend[$i]['email'] = $email;
-                $this->friend[$i]['status'] = $status;
+                $this->friend[$email]['username'] = $user->username;
+                $this->friend[$email]['email'] = $email;
+                $this->friend[$email]['status'] = $status;
                 //--- get the total amount of transactions and the last transaction date
                 // get the positive value
                 $this->db->select_sum('trans_amount', 'positive');
@@ -87,7 +86,7 @@ class Utang extends CI_Controller {
                 $query = $this->db->get('utang_transaction');
                 $row = $query->row();
                 $amount -= $row->negative;
-                $this->friend[$i]['amount'] = $amount;
+                $this->friend[$email]['amount'] = $amount;
                 // get the last transaction date
                 $where = array('trans_sender' => $this->sessiondata['email'], 'trans_recipient' => $email);
                 $or_where = array('trans_sender' => $email, 'trans_recipient' => $this->sessiondata['email']);
@@ -96,9 +95,8 @@ class Utang extends CI_Controller {
                 $this->db->order_by("trans_timestamp", "desc"); 
                 $query = $this->db->get('utang_transaction', 1);
                 $row = $query->row();
-                $this->friend[$i]['last_date'] = $row->trans_timestamp;
+                $this->friend[$email]['last_date'] = $row->trans_timestamp;
                 // increment the counter
-                $i++;
             }
             $this->load->view('utang/base', $data);
         }   
@@ -138,7 +136,6 @@ class Utang extends CI_Controller {
     public function details() {
         $data['page_view'] = "utang/details";
         $data['page_title'] = 'Details';
-        
 
         $this->sessiondata = $this->session->all_userdata();
 
@@ -171,14 +168,14 @@ class Utang extends CI_Controller {
         $data['page_view'] = "utang/add";
         $data['page_title'] = 'Add';
         
-
         $this->sessiondata = $this->session->all_userdata();
-    
+        $this->add = $this->input->post('add');
+        
         if (!$this->ion_auth->logged_in())
         {
             redirect('/utang/login');
 	    }
-        elseif ( $this->input->post('description') == '' ) {
+        elseif (!$this->add['description']) {
             // get user's friends
             $query = $this->db->get_where('utang_user', array('user_email' => $this->sessiondata['email']));
             $row = $query->row();
@@ -194,23 +191,18 @@ class Utang extends CI_Controller {
         }
         else {
             //validate form input
-            $this->form_validation->set_rules('description', 'Description', 'required');
+            $this->form_validation->set_rules('add[description]', 'Description', 'required');
             if ($this->form_validation->run() == true) {
+                var_dump($this->add);
                 // get all input data
-                $sender = $this->sessiondata['email'];
-                $recipient = $this->input->post('username');
-                $action = $this->input->post('action');
-                $amount = $this->input->post('amount');
-                $description = $this->input->post('description');
-                $additional = $this->input->post('additional');
                 // insert input data into transaction table
                 $utang_transaction = array(
-                  'trans_sender' => $sender,
-                  'trans_recipient' => $recipient,
-                  'trans_action' => $action,
-                  'trans_amount' => $amount,
-                  'trans_description' => $description,
-                  'trans_additional' => $additional
+                  'trans_sender' => $this->sessiondata['email'],
+                  'trans_recipient' => $this->add['email'],
+                  'trans_action' => $this->add['action'],
+                  'trans_amount' => $this->add['amount'],
+                  'trans_description' => $this->add['description'],
+                  'trans_additional' => $this->add['additional']
                 );
                 $this->db->insert('utang_transaction', $utang_transaction);
                 redirect('/utang/home');

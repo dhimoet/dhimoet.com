@@ -9,8 +9,8 @@
   <div data-role='content' style='margin:40px 0px 80px 0px;'>
     <form name='add' action="/utang/add/" method="post" id='add' data-ajax="false">
     
-      <label for="username" class="select">Interaction with:</label>
-      <select name="username" id="username">
+      <label for="add[email]" class="select">Interaction with:</label>
+      <select name="add[email]" id="email">
         <?php 
           // run a query for each friend
           foreach($this->users as $key => $value):
@@ -19,31 +19,27 @@
         <?php endforeach; ?>
       </select>
     
-      <label for='action'>Action:</label>
-      
+      <label for='add[action]'>Action:</label>
       <div class="ui-grid-a">
-        
         <div class="ui-block-a">
-          <select name='action' id='action'>
+          <select name='add[action]' id='action'>
             <option value='1'>I gave</option>
             <option value='2'>I received</option>
           </select>
         </div>
         
-        <div class="ui-block-b" style='margin-top:11px; text-align:right;'>
-          
-            <label for='amount' style='display:inline;'>$</label>
-            <input type="text" name="amount" id="amount" value="0.00" style='display:inline; width:80%; text-align:right;' />
-          
+        <div class="ui-block-b" style='margin-top:11px; text-align:right;'>  
+            <label for='add[amount]' style='display:inline;'>$</label>
+            <input type="text" name="add[amount]" id="amount" value="0.00" style='display:inline; width:80%; text-align:right;' />
         </div>
         
       </div><!-- ui-grid-a container -->
     
-      <label for="description">Description:</label>
-      <input type="text" name="description" id="description" value=""  />
+      <label for="add[description]">Description:</label>
+      <input type="text" name="add[description]" id="description" value=""  />
     
-      <label for="additional">Additional description:</label>
-      <textarea name="additional" id="additional"></textarea>
+      <label for="add[additional]">Additional description:</label>
+      <textarea name="add[additional]" id="additional"></textarea>
       
       <input type='submit' value='Add Now!' data-theme='b' />
     
