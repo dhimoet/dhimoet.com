@@ -3,7 +3,6 @@
   <div data-theme='b' data-role='header' style='position:fixed; z-index:999; top:0px;'>
     <h3>Add a Transaction</h3>
     <a data-rel="back" data-role='button' data-icon='back'>Back</a>
-    <a href='/utang/add' data-role='button' data-icon='check' id='submit'>Submit</a>
   </div>
   
   <div data-role='content' style='margin:40px 0px 80px 0px;'>

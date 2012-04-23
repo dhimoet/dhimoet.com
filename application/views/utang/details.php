@@ -41,6 +41,10 @@
     ?>
     </h3>
     
+    <p style='font-style:italic;'>This transaction was added by: 
+        <?php echo ($this->transaction->is_sender)?'You':$this->transaction->username; ?>
+    </p>
+    
   </div><!-- content container -->
   
   <div data-role='footer' style='position:fixed; z-index: 999; bottom:0px;'>

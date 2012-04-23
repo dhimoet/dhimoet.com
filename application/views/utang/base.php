@@ -36,12 +36,19 @@ $(document).bind('pagebeforecreate', function() {
     });
   });
   
-  $('#submit').click(function() {
+  $('#add').submit(function() {
+    if(!$('#description').val()) {
+        alert('You must enter a description!');
+        return false;
+    }
+  });
+  
+  /*$('#submit').click(function() {
     $.mobile.changePage( "/utang/add/", {
 	    type: "post", 
 	    data: $('form').serialize()
     });
-  });
+  });*/
 });
 </script>
   

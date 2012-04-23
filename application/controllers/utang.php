@@ -52,7 +52,7 @@ class Utang extends CI_Controller {
                 // get the user name for each email address
                 $query = $this->db->get_where('users', array('email' => $email));
                 $user = $query->row();
-                $this->friend[$email]['username'] = $user->username;
+                $this->friend[$email]['username'] = ucwords($user->username);
                 $this->friend[$email]['email'] = $email;
                 $this->friend[$email]['status'] = $status;
                 //--- get the total amount of transactions and the last transaction date
@@ -119,7 +119,7 @@ class Utang extends CI_Controller {
             $row = $query->row();
             $this->friend['email'] = $rel[0];
             $this->friend['amount'] = $rel[1];
-            $this->friend['name'] = $row->username;
+            $this->friend['name'] = ucwords($row->username);
             // run a query to get all the transactions with the selected user
             $this->db->where(array('trans_sender' => $this->sessiondata['email']));
             $this->db->where(array('trans_recipient' => $rel[0]));
@@ -159,7 +159,7 @@ class Utang extends CI_Controller {
             // run a query to get the selected user name
             $query = $this->db->get_where('users', $condition_array);
             $row = $query->row();
-            $this->transaction->username = $row->username;
+            $this->transaction->username = ucwords($row->username);
             $this->load->view('utang/base', $data);
         }
     }
@@ -210,51 +210,46 @@ class Utang extends CI_Controller {
         }
     }
   
-  public function activity() {
-    $data['page_view'] = "utang/activity";
-    $data['page_title'] = 'Activity';
-    
+    public function activity() {
+        $data['page_view'] = "utang/activity";
+        $data['page_title'] = 'Activity';
 
-    $this->sessiondata = $this->session->all_userdata();
+        $this->sessiondata = $this->session->all_userdata();
     
-    if (!$this->ion_auth->logged_in())
+        if (!$this->ion_auth->logged_in())
         {
             redirect('/utang/login');
         }
-    else {
-      // run a query to get friends list object  
-      $query = $this->db->get_where('utang_user', array('user_email' => $this->sessiondata['email']));
-      $row = $query->row();
-      $friends_object = json_decode($row->user_friends);
+        else {
+            // run a query to get friends list object  
+            $query = $this->db->get_where('utang_user', array('user_email' => $this->sessiondata['email']));
+            $row = $query->row();
+            $friends_object = json_decode($row->user_friends);
 
-      $this->friend = array();
-      foreach($friends_object as $email => $status) {
-          // run a query to get usernames object
-          $query = $this->db->get_where('users', array('email' => $email));
-          $row = $query->row();
-          $this->friend[$email] = $row->username; 
-      }
+            $this->friend = array();
+            foreach($friends_object as $email => $status) {
+                // run a query to get usernames object
+                $query = $this->db->get_where('users', array('email' => $email));
+                $row = $query->row();
+                $this->friend[$email] = ucwords($row->username); 
+            }
 
-      // run a query to get all transactions
-      // check and only display transactions that involve the user
-      $this->db->where('trans_sender', $this->sessiondata['email']);
-      $this->db->or_where('trans_recipient', $this->sessiondata['email']);
-      $this->db->order_by('trans_timestamp DESC');
-      $query = $this->db->get('utang_transaction');
-      $this->transactions = $query->result();
-
-      $this->load->view('utang/base', $data);
+            // run a query to get all transactions
+            // check and only display transactions that involve the user
+            $this->db->where('trans_sender', $this->sessiondata['email']);
+            $this->db->or_where('trans_recipient', $this->sessiondata['email']);
+            $this->db->order_by('trans_timestamp DESC');
+            $query = $this->db->get('utang_transaction');
+            $this->transactions = $query->result();
+    
+            $this->load->view('utang/base', $data);
+        }
     }
-  }
   
   public function settings() {
     $data['page_view'] = "utang/settings";
     $data['page_title'] = 'Settings';
-    
-    
-    
-    
-    
+
     if (!$this->ion_auth->logged_in())
 		{
 			redirect('/utang/login');
@@ -281,86 +276,86 @@ class Utang extends CI_Controller {
     }
   }
   
-  public function addfriend() {
-    $data['page_view'] = "utang/addfriend";
-    $data['page_title'] = 'Add a Friend';
+    public function addfriend() {
+        $data['page_view'] = "utang/addfriend";
+        $data['page_title'] = 'Add a Friend';
     
-    
-    
-    
-    $data['current_user'] = $this->session->all_userdata();
-    
-    if (!$this->ion_auth->logged_in())
-    {
-      redirect('/utang/login');
-    }
-    else {
-      //validate form input
-      $this->form_validation->set_rules('email', 'Email', 'required');
-      if ($this->form_validation->run() == true) {
-        // get all the input
-        $email = trim($this->input->post('email'));
-        $email = strtolower($email);
-        $message = $this->input->post('additional');
-        $is_requested = 0;
-        // find the email in database
-        $query = $this->db->get_where('utang_user', array('user_email' => $email));
-        $row = $query->row();
-        if($row && $email != $data['current_user']['email']) {
-            //--- UPDATE DATABASE RECIPIENT
-            // get the json friends list
-            $friends_object = '';
-            // add the input to the json
-            if(($row->user_friends != NULL) || ($row->user_friends != '')) {
-              $friends_object = json_decode($row->user_friends); // to object
-            }
-            if(isset($friends_object->{$data['current_user']['email']}) 
-                                            && $friends_object->{$data['current_user']['email']} > 0) {
-              $friends_object->{$data['current_user']['email']} = 2; // add to object
-              $is_requested = 1;
-            }
-            else {
-              $friends_object->{$data['current_user']['email']} = 0; // add to object
-            }
-            $friends_json = json_encode($friends_object); // to string
-            // update database recipient
-            $update = array('user_friends' => $friends_json);
-            $this->db->where('user_email', $email);
-            $this->db->update('utang_user', $update);
-            
-            //--- UPDATE DATABASE REQUESTER  
-            // get the json friends list
-            $query = $this->db->get_where('utang_user', array('user_email' => $data['current_user']['email']));
-            $row = $query->row();
-            $friends_object = '';
-            // add the input to the json
-            if(($row->user_friends != NULL) || ($row->user_friends != '')) {
-              $friends_object = json_decode($row->user_friends); // to object
-            }
-            if($is_requested) {
-              $friends_object->{$email} = 2; // add to object  
-            }
-            else {
-              $friends_object->{$email} = 1; // add to object
-            }
-            $friends_json = json_encode($friends_object); // to string
-            // update database requester
-            $update = array('user_friends' => $friends_json);
-            $this->db->where('user_email', $data['current_user']['email']);
-            $this->db->update('utang_user', $update);
-            
-            // go back to home
-            redirect('/utang/home');
+        $data['current_user'] = $this->session->all_userdata();
+        
+        if (!$this->ion_auth->logged_in())
+        {
+            redirect('/utang/login');
         }
         else {
-            $this->load->view('utang/base', $data);
+            //validate form input
+            $this->form_validation->set_rules('email', 'Email', 'required');
+            if ($this->form_validation->run() == true) {
+                // get all the input
+                $email = trim($this->input->post('email'));
+                $email = strtolower($email);
+                $message = $this->input->post('additional');
+                $is_requested = 0;
+                // find the email in database
+                $query = $this->db->get_where('utang_user', array('user_email' => $email));
+                $row = $query->row();
+                if($row && $email != $data['current_user']['email']) {
+                    //--- UPDATE DATABASE RECIPIENT
+                    // get the json friends list
+                    $friends_object = '';
+                    // add the input to the json
+                    if(($row->user_friends != NULL) || ($row->user_friends != '')) {
+                      $friends_object = json_decode($row->user_friends); // to object
+                    }
+                    if(isset($friends_object->{$data['current_user']['email']}) 
+                                                    && $friends_object->{$data['current_user']['email']} > 0) {
+                      $friends_object->{$data['current_user']['email']} = 2; // add to object
+                      $is_requested = 1;
+                    }
+                    else {
+                      $friends_object->{$data['current_user']['email']} = 0; // add to object
+                    }
+                    $friends_json = json_encode($friends_object); // to string
+                    // update database recipient
+                    $update = array('user_friends' => $friends_json);
+                    $this->db->where('user_email', $email);
+                    $this->db->update('utang_user', $update);
+                    
+                    //--- UPDATE DATABASE REQUESTER  
+                    // get the json friends list
+                    $query = $this->db->get_where('utang_user', array('user_email' => $data['current_user']['email']));
+                    $row = $query->row();
+                    $friends_object = '';
+                    // add the input to the json
+                    if(($row->user_friends != NULL) || ($row->user_friends != '')) {
+                      $friends_object = json_decode($row->user_friends); // to object
+                    }
+                    if($is_requested) {
+                      $friends_object->{$email} = 2; // add to object  
+                    }
+                    else {
+                      $friends_object->{$email} = 1; // add to object
+                    }
+                    $friends_json = json_encode($friends_object); // to string
+                    // update database requester
+                    $update = array('user_friends' => $friends_json);
+                    $this->db->where('user_email', $data['current_user']['email']);
+                    $this->db->update('utang_user', $update);
+                    
+                    // go back to home
+                    $_REQUEST['fail'] = 0;
+                    redirect('/utang/home');
+                }
+                else {
+                    $_REQUEST['fail'] = 1;
+                    $this->load->view('utang/base', $data);
+                }
+            }
+            else {
+                $_REQUEST['fail'] = 1;
+                $this->load->view('utang/base', $data);
+            }
         }
-      }
-      else {
-        $this->load->view('utang/base', $data);
-      }
-    }
-  } // end addfriend
+    } // end addfriend
   
   public function notifications() {
     $data['page_view'] = "utang/notifications";

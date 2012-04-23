@@ -20,7 +20,7 @@
         </li>
         <?php endif; endforeach; endif; ?>
       </ul>
-      <form method='get' action='/utang/confirmfriend' id='hiddenform'>
+      <form method='get' action='/utang/confirmfriend/' id='hiddenform'>
         <input type='hidden' name='whichfriend' id='whichfriend' value='' />
       </form>
       

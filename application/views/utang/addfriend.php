@@ -1,3 +1,11 @@
+<script>
+    $(document).ready(function() {
+        if(<?php echo (isset($_REQUEST['fail']))?$_REQUEST['fail']:0; ?>) {
+            alert('Request failed. Please try again!');
+        }
+    });
+</script>
+
 <div data-role='page' data-title='addfriend' id='addfriend'>
   
   <div data-theme='b' data-role='header' style='position:fixed; z-index:999; top:0px;'>
