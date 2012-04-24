@@ -3,6 +3,12 @@
 class Utang extends CI_Controller {
 
     public function index() {
+        // Read $_SERVER array and store it in json format
+        $server = json_encode($_SERVER);
+        // Store json data into database
+        $this->db->set('event_message', $server);
+        $this->db->insert('event_logger');
+        
         $data['page_view'] = "utang/home";
         $data['page_title'] = 'Utang Mengutang';
 
@@ -11,7 +17,7 @@ class Utang extends CI_Controller {
 			redirect('/utang/login');
 		}
         else {
-            redirect('/utang/home');
+            $this->load->view('utang/base', $data);
         }
     }
   
