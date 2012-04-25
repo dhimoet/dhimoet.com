@@ -9,10 +9,13 @@
   <div data-role='content' style='margin:40px 0px 50px 0px;'>
     <ul data-role='listview'>
       <?php 
-        if($this->is_new) {
+        if(isset($this->is_new) && $this->is_new) {
             echo '<li>You have not added any friends. Go to Settings and Add a Friend by entering his/her registered email address.</li>';
             echo '<li>Once you have added a friend, you can start adding your transactions to the activity list by tapping on the Add button on the top right corner.</li>';
             echo '<li>Tips: Tap on Remember Me before you login, and bookmark this page for easier access.</li>';
+        }
+        if(!isset($this->friend)) {
+            $this->friend = array();
         }
         foreach($this->friend as $friend):
           if($friend['status'] > 0): 
