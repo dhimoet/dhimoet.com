@@ -18,7 +18,7 @@
       <!-- form container -->
       
       <label for='email'>Friend's email:</label>
-      <input type="text" name="email" id="email" value="" />
+      <input type="text" name="email" id="email" placeholder='user@email.com' />
       
       <label for="additional">Additional message:</label>
       <textarea name="additional" id="additional"></textarea>

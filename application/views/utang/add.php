@@ -29,7 +29,7 @@
         
         <div class="ui-block-b" style='margin-top:11px; text-align:right;'>  
             <label for='add[amount]' style='display:inline;'>$</label>
-            <input type="text" name="add[amount]" id="amount" value="0.00" style='display:inline; width:80%; text-align:right;' />
+            <input type="text" name="add[amount]" id="amount" placeholder="0.00" style='display:inline; width:80%; text-align:right;' />
         </div>
         
       </div><!-- ui-grid-a container -->
