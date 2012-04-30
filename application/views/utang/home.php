@@ -26,14 +26,14 @@
           <p class='ui-li-desc' style='font-weight:bold; color:<?php echo ($friend['amount'] < 0)?'red':'green';?>;'>
             <?php
               if($friend['amount'] < 0) {
-                echo 'You should collect $' . (-1 * $friend['amount']);
+                echo 'You should collect $' . money_format('%i', (-1 * $friend['amount']));
               }
               else {
-                echo 'You must return $' . $friend['amount'];
+                echo 'You must return $' . money_format('%i', $friend['amount']);
               }
             ?>
           </p>
-          <p class='ui-li-desc date' style='font-style:italic;'>Last activity on <?php echo $friend['last_date']; ?></p>
+          <p class='ui-li-desc date' style='font-style:italic;'>Last activity on <?php echo date_format(date_create($friend['last_date']), 'M d, Y'); ?></p>
         </a>
       </li>
       <?php endif; endforeach; ?>

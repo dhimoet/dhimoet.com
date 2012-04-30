@@ -45,6 +45,12 @@ class Utang extends CI_Controller {
 			redirect('/utang/login');
 		}
         else {
+            // get all transactions involving the user
+            $this->db->order_by('trans_timestamp DESC');
+            $this->db->where(array('trans_sender' => $this->sessiondata['email']));
+            $this->db->or_where(array('trans_recipient' => $this->sessiondata['email']));
+            $query = $this->db->get('utang_transaction');
+            $all_transactions = $query->result();
             // get friends list
             $query = $this->db->get_where('utang_user', array('user_email' => $this->sessiondata['email']));
             $current_user = $query->row();
@@ -94,12 +100,16 @@ class Utang extends CI_Controller {
                 $amount -= $row->negative;
                 $this->friend[$email]['amount'] = $amount;
                 // get the last transaction date
-                $where = array('trans_sender' => $this->sessiondata['email'], 'trans_recipient' => $email);
-                $or_where = array('trans_sender' => $email, 'trans_recipient' => $this->sessiondata['email']);
-                $this->db->where($where);
-                $this->db->or_where($or_where);
+                $this->db->where(array(
+                    'trans_sender' => $this->sessiondata['email'],
+                    'trans_recipient' => $email
+                ));
+                $this->db->or_where(array(
+                    'trans_sender' => $email,
+                    'trans_recipient' => $this->sessiondata['email']
+                ));
                 $this->db->order_by("trans_timestamp", "desc"); 
-                $query = $this->db->get('utang_transaction', 1);
+                $query = $this->db->get('utang_transaction');
                 $row = $query->row();
                 $this->friend[$email]['last_date'] = $row->trans_timestamp;
                 // increment the counter

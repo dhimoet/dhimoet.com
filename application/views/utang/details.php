@@ -18,11 +18,11 @@
     <p>Action:</p>
     <?php
         if(($this->transaction->is_sender && $this->transaction->trans_action == 1) || (!$this->transaction->is_sender && $this->transaction->trans_action ==2)) {
-            $message = 'You gave $'. $this->transaction->trans_amount .' to this user on '. $this->transaction->trans_timestamp;
+            $message = 'You gave $'. money_format('%i', $this->transaction->trans_amount) .' to this user on '. date_format(date_create($this->transaction->trans_timestamp), 'M d, Y \a\t H:i');
             $color = 'red';
         }
         elseif(($this->transaction->is_sender && $this->transaction->trans_action ==2) || (!$this->transaction->is_sender && $this->transaction->trans_action == 1)) {
-            $message = 'You received $'. $this->transaction->trans_amount .' from this user on '. $this->transaction->trans_timestamp;
+            $message = 'You received $'. money_format('%i', $this->transaction->trans_amount) .' from this user on '. date_format(date_create($this->transaction->trans_timestamp), 'M d, Y \a\t H:i');
             $color = 'green';
         }
     ?>

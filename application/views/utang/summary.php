@@ -14,10 +14,10 @@
         <p style='text-align:right; font-weight:bold; color:<?php echo ($this->friend['amount'] < 0)?'red':'green';?>;'>
           <?php
             if($this->friend['amount'] < 0) {
-              echo '$' . (-1 * $this->friend['amount']);
+              echo '$' . money_format('%i', (-1 * $this->friend['amount']));
             }
             else {
-              echo '$' . $this->friend['amount'];
+              echo '$' . money_format('%i', $this->friend['amount']);
             }
           ?>
         </p>
@@ -48,15 +48,15 @@
           <p class='ui-block-b ui-li-desc' style='margin-top:10px; text-align:right; font-weight:bold; color:<?php echo ($prefix)?'green':'red';?>;'>
             <?php
               if($prefix) {
-                echo 'You received $' . $transaction->trans_amount;
+                echo 'You received $' . money_format('%i', $transaction->trans_amount);
               }
               else {
-                echo 'You gave $' . $transaction->trans_amount;
+                echo 'You gave $' . money_format('%i', $transaction->trans_amount);
               }
             ?>
           </p>
         </div>
-        <p class='ui-li-desc date' style='font-style:italic;'><?php echo $transaction->trans_timestamp; ?></p>
+        <p class='ui-li-desc date' style='font-style:italic;'><?php echo date_format(date_create($transaction->trans_timestamp), 'M d, Y'); ?></p>
       </li>
       <?php endforeach; ?>
     </ul>

@@ -37,14 +37,14 @@
           <p class='ui-li-desc' style='font-weight:bold; color:<?php echo ($prefix)?'green':'red';?>;'>
               <?php
                   if($prefix) {
-                    echo 'You received $' . $transaction->trans_amount;
+                    echo 'You received $' . money_format('%i', $transaction->trans_amount);
                   }
                   else {
-                    echo 'You gave $' . $transaction->trans_amount;
+                    echo 'You gave $' . money_format('%i', $transaction->trans_amount);
                   }
               ?>
           </p>
-          <p class='ui-li-desc date' style='font-style:italic;'><?php echo $transaction->trans_timestamp; ?></p>
+          <p class='ui-li-desc date' style='font-style:italic;'><?php echo date_format(date_create($transaction->trans_timestamp), 'M d, Y'); ?></p>
         </a>
       </li>
       <?php endforeach; ?>
