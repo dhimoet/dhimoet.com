@@ -6,7 +6,7 @@
     <a href='/utang/add/' data-role='button' data-icon='plus'>Add</a>
   </div>
   
-  <div data-role='content' style='margin:40px 0px 50px 0px;'>
+  <div data-role='content' style='margin:40px 0px 80px 0px;'>
     <ul data-role='listview'>
       <?php 
         if(isset($this->is_new) && $this->is_new) {

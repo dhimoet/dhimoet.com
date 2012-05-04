@@ -10,6 +10,15 @@ class Home extends CI_Controller {
     
 		$this->load->view('base', $data);
 	}
+    
+    public function ga_usah_capturing_traffic_kali_moch() {
+    $data['view_location'] = "home/ga_usah_capturing_traffic_kali_moch";
+    $data['page_title'] = "Ga usah capturing traffic kali Moch";
+    $data['page_css'] = array('960', 'reset', 'text', 'main');
+    $data['page_js'] = array('jquery', 'home');
+    
+        $this->load->view('base', $data);
+    }
   
 }
 

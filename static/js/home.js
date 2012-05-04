@@ -7,6 +7,7 @@ $(document).ready(function(){
     $(hash_name).delay(400).slideDown();
     
     // Animate clicked icon
+    $().animate();
     $('.item_icon > a').removeClass('active');
     $(this).addClass('active');
   });

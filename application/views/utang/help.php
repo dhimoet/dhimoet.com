@@ -1,3 +1,10 @@
+<script>
+    $(document).ready(function() {
+        $('.bookmark').click(function() {
+            window.external.AddFavorite('http://www.dhimoet.com/utang', 'Utang Webapp');
+        });
+    });    
+</script>
   <div data-role='page' data-title='settings' id='settings'>
   
     <div data-theme='b' data-role='header' style='position:fixed; z-index:999; top:0px;'>
@@ -10,7 +17,7 @@
       
       <ul data-role='listview'>
         <li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-d">Tips</li>
-        <li>For iPhones, you can tap on the middle button on the bottom and select Add to Homescreen to place and run this webapp as if this is a native mobile app.</li>
+        <li><a class='bookmark'>For iPhones, you can tap on the middle button on the bottom and select Add to Homescreen to place and run this webapp as if this is a native mobile app. Or click here to open the dialog.</a></li>
       </ul>
       
     </div><!-- content container -->
