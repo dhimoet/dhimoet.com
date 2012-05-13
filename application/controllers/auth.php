@@ -55,13 +55,13 @@ class Auth extends CI_Controller {
 
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
 			{ //if the login is successful
-        /* custom code */
-        $sessiondata = array(
-          'email'     => $this->input->post('identity'),
-          'logged_in' => TRUE
-        );
-        $this->session->set_userdata($sessiondata);
-        /* custom code */
+                /* custom code */
+                $sessiondata = array(
+                  'email'     => $this->input->post('identity'),
+                  'logged_in' => TRUE
+                );
+                $this->session->set_userdata($sessiondata);
+                /* custom code */
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 				redirect('/utang/home');
