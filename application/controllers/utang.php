@@ -17,7 +17,7 @@ class Utang extends CI_Controller {
 			redirect('/utang/login');
 		}
         else {
-            $this->load->view('utang/base', $data);
+            redirect('/utang/home');
         }
     }
   
@@ -200,7 +200,7 @@ class Utang extends CI_Controller {
             foreach($this->friends as $key => $value) {
                 $query = $this->db->get_where('users', array('email' => $key) );
                 $row = $query->row();
-                $this->users->{$key} = $row->username; 
+                $this->users->{$key} = ucwords($row->username); 
             }
             // display
             $this->load->view('utang/base', $data);
@@ -278,11 +278,7 @@ class Utang extends CI_Controller {
   public function signup() {
     $data['page_view'] = "utang/signup";
     $data['page_title'] = 'Sign Up';
-    
-    
-    
-    
-    
+
     if (!$this->ion_auth->logged_in())
 		{
       $this->load->view('utang/base', $data);
