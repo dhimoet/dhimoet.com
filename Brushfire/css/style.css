@@ -1,13 +1,15 @@
 @font-face
 {
 	font-family: Chachie;
-	src: url('../fonts/CHACHIE.TTF');
+	src: url('../fonts/CHACHIE.TTF'),
+		 url('../fonts/CHACHIE.eot'); /* IE9 */;
 }
 
 @font-face
 {
 	font-family: PetitLatin;
-	src: url('../fonts/PetitLatin.ttf');
+	src: url('../fonts/PetitLatin.ttf'),
+		 url('../fonts/PetitLatin.eot');
 }
 
 body {
