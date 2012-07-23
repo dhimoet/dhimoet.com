@@ -32,9 +32,7 @@
 			<label>Comment:</label>
 		</div>
 		<div class="inputfield_small">
-			<textarea id="comment">
-				<?php echo $_REQUEST['comment'];?>
-			</textarea>
+			<textarea name="comment" id="comment" disabled><?php echo $_REQUEST['comment'];?></textarea>
 		</div>
 		<div class="inputfield_small">
 			<label>I want to learn HTML</label>
