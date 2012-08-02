@@ -56,33 +56,34 @@
         <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
         <script>
         new TWTR.Widget({
-          version: 2,
-          type: 'profile',
-          rpp: 1,
-          interval: 30000,
-          width: 350,
-          height: 300,
-          theme: {
-            shell: {
-              background: '#00bfff',
-              color: '#ffffff'
-            },
-            tweets: {
-              background: '#ffffff',
-              color: '#000000',
-              links: '#0900ff'
-            }
-          },
-          features: {
-          scrollbar: false,
-          loop: false,
-          live: false,
-          behavior: 'all'
-        }
-      }).render().setUser('dhimoet_en').start();
-      </script>
-      
+			version: 2,
+			type: 'profile',
+			rpp: 1,
+			interval: 30000,
+			width: 350,
+			height: 300,
+			theme: {
+				shell: {
+				    background: '#00bfff',
+				    color: '#ffffff'
+				},
+				tweets: {
+				    background: '#ffffff',
+				    color: '#000000',
+					links: '#0900ff'
+				}
+			},
+			features: {
+			scrollbar: false,
+			loop: false,
+			live: false,
+			behavior: 'all'
+			}
+		}).render().setUser('dhimoet_en').start();
+		</script>
       </div>
+      
+      <div id="email_me">Email me</div>
       
       <!-- End of Body container -->
     </div>

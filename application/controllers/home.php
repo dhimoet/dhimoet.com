@@ -19,6 +19,17 @@ class Home extends CI_Controller {
     
         $this->load->view('base', $data);
     }
+    
+    public function send_email($from, $message) {
+		$this->load->library('email');
+
+		$this->email->from($from, $from);
+		$this->email->to('admin@dhimoet.com', 'Dhimoet Admin'); 
+		$this->email->subject('A visitor has sent you a message!');
+		$this->email->message($message);	
+
+		$this->email->send();
+	}
   
 }
 
