@@ -33,7 +33,7 @@ class CI_Email {
 	var	$protocol		= "smtp";	// mail/sendmail/smtp
 	var	$smtp_host		= "smtp.googlemail.com";		// SMTP Server.  Example: mail.earthlink.net
 	var	$smtp_user		= "admin@dhimoet.com";		// SMTP Username
-	var	$smtp_pass		= "blah";		// SMTP Password
+	var	$smtp_pass		= "test";		// SMTP Password
 	var	$smtp_port		= "465";		// SMTP Port
 	var	$smtp_timeout	= 7;		// SMTP Timeout in seconds
 	var	$smtp_crypto	= "ssl";		// SMTP Encryption. Can be null, tls or ssl.
