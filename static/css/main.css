@@ -97,6 +97,23 @@
   font-size: 14pt;
 }
 
+#overlay_background {
+	background-color: #000000;
+	opacity: 0.6;
+	position: absolute;
+	top: 0px;
+	z-index: 999;
+}
+
+#overlay_window {
+	background-color: #ffffff;
+	padding: 20px;
+	position: absolute;
+	top: 0px;
+	z-index: 1000;
+}
+
+
 #visitors #menu {
   height: 50px;
   margin: 20px 0px 0px 0px;
