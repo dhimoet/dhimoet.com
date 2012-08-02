@@ -47,13 +47,15 @@ $(document).ready(function(){
 		var from = $('#from').val();
 		var message = $('#message').val();
 		$.ajax({
-		    url: "/home/send_email/" + from + "/" + message,
+		    url: "/home/send_email/",
+		    type: "POST",
+			data: {from : from, message : message},
 		    beforeSend: function() {
 				$('#overlay_window').remove();
 				$('#overlay_background').remove();
 			},
 		    success: function() {
-				
+				// none
 			}
 		});
 	});
