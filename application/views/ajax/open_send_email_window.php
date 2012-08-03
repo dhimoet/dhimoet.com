@@ -55,6 +55,7 @@
 					},
 					success: function() {
 						$('#overlay_container').remove();
+						$('#overlay_template').remove();
 					},
 					error: function() {
 						$('input[type=submit]').show();
