@@ -6,7 +6,7 @@ class Ajax extends CI_Controller {
     
 	}
     
-    public function send_email() {
+	public function send_email() {
 		$this->load->library('email');
 		
 		$from = $this->input->post('from');

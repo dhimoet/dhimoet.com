@@ -123,6 +123,18 @@
   font-size: 14pt;
 }
 
+#email_me {
+	background-color: deepSkyBlue;
+	font-size: 18px;
+	font-weight: bold;
+	color: #ffffff;
+	border: 5px solid deepSkyBlue;
+	border-radius: 5px;
+	width: 120px;
+	height: 80px;
+	cursor: pointer;
+}
+
 #overlay_background {
 	background-color: #000000;
 	opacity: 0.6;
