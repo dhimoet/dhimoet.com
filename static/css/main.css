@@ -135,6 +135,10 @@
 	cursor: pointer;
 }
 
+#email_me:active {
+	opacity: 0.6;
+}
+
 #overlay_background {
 	background-color: #000000;
 	opacity: 0.6;
