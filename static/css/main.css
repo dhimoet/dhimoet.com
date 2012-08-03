@@ -38,6 +38,17 @@
 	padding: 5px;
 }
 
+.processing {
+	font-size: 14px;
+	font-style: italic;
+}
+
+.error {
+	font-size: 14px;
+	font-style: italic;
+	color: red;
+}
+
 .center {
   text-align: center;
 }

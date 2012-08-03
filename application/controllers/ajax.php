@@ -18,7 +18,12 @@ class Ajax extends CI_Controller {
 		$this->email->subject('A visitor has sent you a message!');
 		$this->email->message($message);	
 
-		$this->email->send();
+		if($this->email->send()) {
+			echo "success";
+		}
+		else {
+			echo "failed";
+		}
 	}
 }
 

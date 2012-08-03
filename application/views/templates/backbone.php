@@ -34,13 +34,13 @@
 
 <!-- email form template -->
 <script type="text/template" id="send_email_template">
-	<form id="email_form">	
+	<form id="email_form" onsubmit="return false">	
 		<div class="form_field">
 			<div class="form_element">
 				<label>Your email address:</label>
 			</div>
 			<div class="form_element">
-				<input type="text" id="from" class="validate[required,custom[email]]" />
+				<input type="text" id="from" class="validate[required,custom[email]]" placeholder="user@email.com" />
 			</div>
 		</div>
 		<div class="form_field">
@@ -48,7 +48,7 @@
 				<label>Comment:</label>
 			</div>
 			<div class="form_element">
-				<textarea id="message" class="validate[required]" ></textarea>
+				<textarea id="message" class="validate[required]" placeholder="Type your comment here..." ></textarea>
 			</div>
 		</div>
 		<div class="form_field">
@@ -84,13 +84,24 @@
 					type: "POST",
 					data: {from : from, message : message},
 					beforeSend: function() {
+						$('input[type=submit]').before('<span class="processing">Sending...</span>');
 						$('input[type=submit]').hide();
+						$('.error').remove();
 					},
-					success: function() {
-						$('#overlay_container').empty();
+					success: function(data) {
+						if(data == "success") {
+							$('#overlay_container').empty();
+						}
+						else {
+							$('.processing').remove();
+							$('input[type=submit]').show();
+							$('input[type=submit]').after('<div class="error">Failed... Please try again!</div>');
+						}
 					},
 					error: function() {
+						$('.processing').remove();
 						$('input[type=submit]').show();
+						$('input[type=submit]').after('<div class="error">Failed... Please try again!</div>');
 					}
 				});
 			}
