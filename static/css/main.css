@@ -8,12 +8,26 @@
 	display: block;
 }
 
-.form_element input {
+.form_submit {
+	text-align: center;
+	display: block;
+}
+
+.form_element input[type=text] {
 	border: 1px solid grey;
 	border-radius:5px;
 	width: 200px;
 	height:25px;
 	padding: 5px;
+}
+
+.form_submit input[type=submit] {
+	border: 1px solid grey;
+	border-radius:5px;
+	width: 200px;
+	height:25px;
+	padding: 5px;
+	cursor: pointer;
 }
 
 .form_element textarea {

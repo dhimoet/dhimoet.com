@@ -5,8 +5,8 @@ class Home extends CI_Controller {
 	public function index() {
 		$data['view_location'] = "home/index";
 		$data['page_title'] = "Home";
-		$data['page_css'] = array('960', 'reset', 'text', 'main');
-		$data['page_js'] = array('jquery', 'home', 'underscore-min', 'backbone-min');
+		$data['page_css'] = array('960', 'reset', 'text', 'main', 'validationEngine.jquery');
+		$data['page_js'] = array('jquery', 'home', 'underscore-min', 'backbone-min', 'jquery.validationEngine', 'jquery.validationEngine-en');
     
 		$this->load->view('base', $data);
 	}

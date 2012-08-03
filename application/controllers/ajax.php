@@ -11,8 +11,9 @@ class Ajax extends CI_Controller {
 		
 		$from = $this->input->post('from');
 		$message = $this->input->post('message');
+		$message = "This message was sent by: \n{$from}\n\n" . $message;
 
-		$this->email->from($from, $from);
+		$this->email->from("system@dhimoet.com", "System Message");
 		$this->email->to('admin@dhimoet.com', 'Dhimoet Admin'); 
 		$this->email->subject('A visitor has sent you a message!');
 		$this->email->message($message);	
