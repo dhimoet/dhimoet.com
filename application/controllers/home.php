@@ -2,23 +2,38 @@
 
 class Home extends CI_Controller {
 
-	public function index() {
-		$data['view_location'] = "home/index";
-		$data['page_title'] = "Home";
-		$data['page_css'] = array('960', 'reset', 'text', 'main', 'validationEngine.jquery');
-		$data['page_js'] = array('jquery', 'home', 'underscore-min', 'backbone-min', 'jquery.validationEngine', 'jquery.validationEngine-en');
-    
-		$this->load->view('base', $data);
+	public function __construct()
+	{
+		parent::__construct();
+        
+		$title = ucwords(str_replace('_', ' ',$this->router->fetch_method()));
+		$this->head['doctype'] = doctype('html4-trans');
+		$this->head['title'] = "Dhimoet.com | " . $title;
+		$this->head['css'] = array("/static/css/main.css",
+								   "/static/css/960.css",
+								   "/static/css/reset.css",
+								   "/static/css/text.css",
+								   "/static/css/validationEngine.jquery.css");
+		$this->head['js'] = array("/static/js/jquery-1.7.2.min.js",
+								  "/static/js/jquery.validationEngine.js",
+								  "/static/js/jquery.validationEngine-en.js",
+								  "/static/js/underscore-min.js",
+								  "/static/js/backbone-min.js",
+								  "/static/js/home.js");
 	}
+	
+	public function index() {
+		$this->home();
+	}
+
+	public function home() {
     
-    public function ga_usah_capturing_traffic_kali_moch() {
-		$data['view_location'] = "home/ga_usah_capturing_traffic_kali_moch";
-		$data['page_title'] = "Ga usah capturing traffic kali Moch";
-		$data['page_css'] = array('960', 'reset', 'text', 'main');
-		$data['page_js'] = array('jquery', 'home');
-    
-        $this->load->view('base', $data);
-    }
+		$this->load->view('templates/base_header', $this->head);
+		$this->load->view('templates/backbone');
+		$this->load->view('home/index');
+		$this->load->view('templates/base_footer');
+		
+	}
 }
 
 /* End of file home.php */

@@ -24,24 +24,18 @@ $(document).ready(function(){
     
 	});
 	
-	// open a send email popup window
+	// open email form popup window
 	$('#email_me').click(function() {
-	
+		
 		// open overlay
-		$.ajax({
-		    url: "/ajax/open_overlay/",
-		    success: function(data) {
-				$('body').prepend(data);
-			}
-		});
+		var overlay_view = new OverlayView({ el: $("#overlay_container") });
 		
 		// place a form
-		$.ajax({
-		    url: "/ajax/open_send_email/",
-		    success: function(data) {
-				$('#overlay_window').append(data);
-			}
-		});
-	
+		var send_email_view = new SendEmailView({ el: $("#overlay_content") });
+		
+		expandOverlayElements();
+		
+		// initialize validation engine
+		$("#email_form").validationEngine();
 	});
 });

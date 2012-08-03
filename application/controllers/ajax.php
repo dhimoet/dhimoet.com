@@ -20,15 +20,6 @@ class Ajax extends CI_Controller {
 
 		$this->email->send();
 	}
-	
-	public function open_overlay() {
-		$this->load->view('ajax/overlay');
-	}
-	
-	public function open_send_email() {
-		$this->load->view('ajax/open_send_email_window');
-	}
-  
 }
 
 /* End of file home.php */
