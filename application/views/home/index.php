@@ -1,6 +1,6 @@
   <div id='home'>
 
-    <div id='header'>
+    <div id='filler'>
       <!-- 200px -->
     </div>
 
@@ -86,6 +86,10 @@
       <input type="button" id="email_me" value="Email Me" />
       
       <!-- End of Body container -->
+    </div>
+    
+    <div id='filler'>
+      <!-- 200px -->
     </div>
 
   </div>

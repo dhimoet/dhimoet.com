@@ -14,7 +14,7 @@
 }
 
 .form_element input[type=text] {
-	border: 1px solid grey;
+	border: 1px solid gray;
 	border-radius:5px;
 	width: 200px;
 	height:25px;
@@ -22,7 +22,7 @@
 }
 
 .form_submit input[type=submit] {
-	border: 1px solid grey;
+	border: 1px solid gray;
 	border-radius:5px;
 	width: 200px;
 	height:25px;
@@ -31,7 +31,7 @@
 }
 
 .form_element textarea {
-	border: 1px solid grey;
+	border: 1px solid gray;
 	border-radius:5px;
 	width: 400px;
 	height:200px;
@@ -77,11 +77,11 @@
 
 #home {
   width: 700px;
-  margin: auto;
+  margin: 0px auto;
   text-align: center;
 }
 
-#home #header {
+#home #filler {
   height: 200px;
 }
 
