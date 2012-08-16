@@ -83,7 +83,9 @@
 		</script>
       </div>
       
-      <input type="button" id="email_me" value="Email Me" />
+      <div id="email">
+		  <input type="button" id="email_me" value="Email Me" />
+      </div>
       
       <!-- End of Body container -->
     </div>

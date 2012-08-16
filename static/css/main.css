@@ -148,6 +148,10 @@
   font-size: 14pt;
 }
 
+#email {
+	margin: 60px;
+}
+
 #email_me {
 	background-color: deepSkyBlue;
 	font-size: 18px;
@@ -184,7 +188,7 @@
 #overlay_close_button {
 	background-color: #ffffff;
 	padding: 3px;
-	border: 5px solid #000000;
+	border: 4px solid #000000;
 	border-radius:20px;
 	position: absolute;
 	top: -15px;

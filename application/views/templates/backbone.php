@@ -2,7 +2,7 @@
 <div id="overlay_container"></div>
 
 <script type="text/template" id="overlay_template">
-	<div id="overlay_background">aaa</div>
+	<div id="overlay_background"></div>
 	<div id="overlay_window">
 		<span id="overlay_close_button">&nbsp;<strong>X</strong>&nbsp;</span>
 		<div id="overlay_content"></div>
@@ -114,7 +114,7 @@
 <script type="text/javascript">
 	// Expand overlay elements
 	function expandOverlayElements() {
-		$('#overlay_background').height($(window).height());
+		$('#overlay_background').height($(document).height()); // 'document' because it works better when developer tools window is opened
 		$('#overlay_background').width($(window).width());
 		$('#overlay_window').css('top', ($(window).height() / 2) - ($('#overlay_window').height() / 2));
 		$('#overlay_window').css('left', ($(window).width() / 2) - ($('#overlay_window').width() / 2));

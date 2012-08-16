@@ -5,7 +5,7 @@ $(document).ready(function(){
 		// Show description
 		var hash_name = $(this).attr('rel');
 		$('.item_description').slideUp();
-		$('#twitter').fadeOut();
+		$('#twitter, #email').fadeOut();
 		$(hash_name).delay(400).slideDown();
 		
 		// Animate clicked icon
@@ -20,7 +20,7 @@ $(document).ready(function(){
 		// Close description
 		$('.item_description').slideUp();
 		$('.item_icon > a').removeClass('active');
-		$('#twitter').delay(400).fadeIn();
+		$('#twitter, #email').delay(400).fadeIn();
     
 	});
 	
