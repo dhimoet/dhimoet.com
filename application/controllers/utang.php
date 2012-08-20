@@ -1,7 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Utang extends CI_Controller {
-
+	
+	public function __construct()
+	{
+		parent::__construct();
+		
+		// this app is not used anymore
+		redirect('http://utang.dhimoet.com/', 'refresh');
+	}
+	
     public function index() {
         // Read $_SERVER array and store it in json format
         $server = json_encode($_SERVER);
