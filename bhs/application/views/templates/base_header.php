@@ -12,6 +12,6 @@
 <body>
 	
 <div id="header">
-	<div class="logo"><img src="/public/img/mobileLogo.png" /></div>
+	<div class="logo"><img src="<?=base_url()?>/public/img/mobileLogo.png" /></div>
 	<div class="slider"><div class="button">&nbsp;</div></div>
 </div>
