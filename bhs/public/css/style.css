@@ -117,10 +117,11 @@ ul {
 	color: #666666;
 	border: 1px solid #666666;
 	box-shadow: 0px 1px 10px #888888 inset;
-	padding: 8px;
+	padding: 10px 12px;
 }
 
 #menu li a {
 	color: #666666;
+	display: block;
 }
 
