@@ -1,5 +1,5 @@
 body {
-	background: url('/public/img/siteBG.jpg');
+	background: url('../img/siteBG.jpg');
 	margin: 0px;
 	padding: 0px;
 }
@@ -81,18 +81,18 @@ ul {
 }
 
 #header .logo {
-	background: url('/public/img/footerBG.png');
+	background: url('../img/footerBG.png');
 	text-align: center;
 	padding: 10px 0px;
 }
 
 #header .slider {
-	background: url('/public/img/navLineSlideDown.png') repeat-x;
+	background: url('../img/navLineSlideDown.png') repeat-x;
 	text-align: center;
 }
 
 #header .slider .button {
-	background: url('/public/img/navSlideDown.png') no-repeat;
+	background: url('../img/navSlideDown.png') no-repeat;
 	text-align: center;
 	width: 36px;
 	height: 33px;
@@ -100,6 +100,6 @@ ul {
 }
 
 #header .slider .button:hover {
-	background: url('/public/img/navSlideDownHover.png') no-repeat;
+	background: url('../img/navSlideDownHover.png') no-repeat;
 	cursor: pointer;
 }

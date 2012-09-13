@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://m.bhs-consultants.dev/';
+$config['base_url']	= 'http://www.dhimoet.com/bhs';
 
 /*
 |--------------------------------------------------------------------------
