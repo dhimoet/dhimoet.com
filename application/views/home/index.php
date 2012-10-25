@@ -27,7 +27,7 @@
       <div id='blog' class='item_description'>
         <p class='title'>My Blog  </p>
         <p class='body'>I used to think that writting a blog is a waste of time. Who would even read it? Then one of my friends answered that question: Me. There were so many cases when I received important, helpful, or valuable information, and I simply forgot everything after a few days, or even a few minutes. By writing a blog, I am hoping that everything that has entered my brain will never be lost. Writing a blog is always easier than writing a note or a diary. Also, looking for old information is always easier when it is stored online. Not only it will benefit me, hopefully other people will also benefit from my blog, without me wasting a single paper.  </p>
-        <p class='link'>  <a href='/wordpress/'>Go to My Blog  </a>  </p>
+        <p class='link'>  <a href='http://blog.dhimoet.com/'>Go to My Blog  </a>  </p>
         <p class='link close'>  <a href='#closed'>Close</a>  </p>
       </div>
       
