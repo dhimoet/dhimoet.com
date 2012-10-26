@@ -34,7 +34,7 @@
       <div id='facebook' class='item_description'>
         <p class='title'>My Facebook  </p>
         <p class='body'>Just like other people, I too have a Facebook account. Facebook helps me stay in touch with my friends and family anywhere they are. I was born and grew up in Indonesia. And I have known a lot of people from different countries since I moved to America in 2004. Because of Facebook, we are able to stay connected. Feel free to send me a message, send me a friend request, or stalk me anytime!  </p>
-        <p class='link'>  <a href='http://www.facebook.com/dhimoet'>Go to My Facebook  </a>  </p>
+        <p class='link'>  <a href='http://www.facebook.com/pages/Dhimoetcom/218202268209257'>Go to My Facebook  </a>  </p>
         <p class='link close'>  <a href='#closed'>Close</a>  </p>
       </div>
       
