@@ -1,0 +1,57 @@
+<html>
+<head>
+	<title>Adhika Mahendra - Test</title>
+	<style>
+		div {
+			border: 2px solid black;
+			padding: 0px;
+		}
+		.container {
+			width: 402px;
+			height: 331px;
+		}
+		.container div {
+			position: relative;
+			margin: -2px 0px 0px -2px;
+		}
+		.short {
+			height: 25px;
+		}
+		.medium {
+			height: 49px;
+		}
+		.tall {
+			height: 100px;
+		}
+		.extra-tall {
+			height: 150px;
+		}
+		.very-tall {
+			height: 200px;
+		}
+		.span1 {
+			width: 99px;
+		}
+		.span2 {
+			width: 200px;
+		}
+		.span4 {
+			width: 402px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="medium span4"></div>
+		<div class="tall span2"></div>
+		<div class="medium span2" style="left: 202px; top: -102px"></div>
+		<div class="medium span1" style="left: 202px; top: -102px"></div>
+		<div class="tall span2" style="top: -102px"></div>
+		<div class="medium span1" style="top: -102px"></div>
+		<div class="medium span1" style="left: 102px; top: -153px"></div>
+		<div class="extra-tall span1" style="left: 202px; top: -305px"></div>
+		<div class="very-tall span1" style="left: 303px; top: -507px"></div>
+		<div class="short span4" style="top: -507px"></div>
+	</div>
+</body>
+</html>
