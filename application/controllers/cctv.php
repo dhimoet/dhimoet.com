@@ -55,10 +55,14 @@ class Cctv extends CI_Controller {
 	private function send_email($to, $attachments) {
 		$this->load->library('email');
 
+        $message = '<p>Timestamp: '. date('Y-m-d H:i:s', strtotime('now')) .'</p>';
+        $message.= '<p>Sever Address: '. $_SERVER['SERVER_ADDR'] .'</p>';
+        $message.= '<p>Remote Address: '. $_SERVER['REMOTE_ADDR'] .'</p>';
+
 		$this->email->from("system@dhimoet.com", "System Message");
 		$this->email->to($to); 
 		$this->email->subject('AUTOMATED CCTV - Security Webcam');
-		$this->email->message(date('Y-m-d H:i:s', strtotime('now')));
+		$this->email->message($message);
 		// attach files
 		foreach($attachments as $attachment) {
 			$this->email->attach($attachment);
