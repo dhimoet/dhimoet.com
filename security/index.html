@@ -88,7 +88,7 @@
 		function sendImages(email, images) {
             if(email) {
                 $.ajax({
-                    url: 'http://<?php echo $_SERVER['SERVER_NAME'];?>/cctv/ajax_images',
+                    url: '<?php echo $_SERVER['REQUEST_URI'];?>../index.php/cctv/ajax_images',
                     type: 'POST',
                     data: { email: email, images: images },
                     success: function(response) {
